@@ -3,176 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atelier Minifig — Figurines de collection</title>
-  <meta name="description" content="Figurines LEGO authentiques, identifiées et photographiées individuellement.">
+  <title>Atelier Minifig — Figurines LEGO® contrôlées</title>
+  <meta name="description" content="Figurines LEGO® authentiques, complètes et contrôlées avant expédition. Catalogue classé par univers et référence.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="announcement">Livraison offerte dès 75 € · Figurines contrôlées individuellement</div>
+  <div class="topbar">Livraison suivie en France · Chaque figurine est contrôlée avant expédition</div>
 
   <header class="site-header">
-    <a class="brand" href="#">
-      <span class="brand-mark">AM</span>
-      <span>Atelier Minifig</span>
-    </a>
-    <nav class="desktop-nav">
+    <a class="wordmark" href="#">ATELIER MINIFIG</a>
+    <nav>
       <a href="#catalogue">Catalogue</a>
-      <a href="#collections">Collections</a>
-      <a href="#about">Notre sélection</a>
+      <a href="#standard">Notre standard</a>
+      <a href="#guide">Guide</a>
     </nav>
-    <button class="cart-button" id="cartOpen" aria-label="Ouvrir le panier">
-      Panier <span id="cartCount">0</span>
-    </button>
+    <button class="cart-button" id="cartOpen">Panier <span id="cartCount">0</span></button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Figurines de collection</p>
-        <h1>Chaque figurine mérite sa place.</h1>
-        <p class="hero-text">
-          Des figurines authentiques, identifiées par référence et présentées individuellement.
-          Une sélection pensée pour les collectionneurs comme pour les cadeaux.
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="#catalogue">Explorer le catalogue</a>
-          <a class="button secondary" href="#about">Découvrir notre méthode</a>
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="kicker">Figurines LEGO® d'occasion sélectionnées</p>
+        <h1>La bonne référence.<br>Le bon état.<br>Sans mauvaise surprise.</h1>
+        <p class="intro-text">Chaque figurine est authentifiée, vérifiée pièce par pièce et vendue complète selon sa référence. Une seule norme pour tout le catalogue : très bon état.</p>
+        <div class="intro-actions">
+          <a class="button dark" href="#catalogue">Voir les figurines</a>
+          <a class="text-link" href="#standard">Comment nous contrôlons chaque pièce →</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="display-card card-large">
-          <img src="assets/njo060.svg" alt="Pythor P. Chumsworth">
-          <div class="display-meta">
-            <span>Ninjago</span>
-            <strong>Pythor · njo060</strong>
-          </div>
-        </div>
-        <div class="display-card card-small">
-          <img src="assets/sw0359.svg" alt="Commando Droid">
+      <div class="featured-product" onclick="openProduct(1)">
+        <div class="featured-image"><img src="njo060.svg" alt="Pythor P. Chumsworth"></div>
+        <div class="featured-caption">
+          <div><span>NINJAGO</span><strong>Pythor P. Chumsworth</strong></div>
+          <div><span>Réf. njo060</span><strong>26 €</strong></div>
         </div>
       </div>
     </section>
 
-    <section class="trust-strip">
-      <div><strong>Authenticité vérifiée</strong><span>Pièces et marquages contrôlés</span></div>
-      <div><strong>État transparent</strong><span>Chaque défaut est indiqué</span></div>
-      <div><strong>Stock réel</strong><span>Un exemplaire = une disponibilité</span></div>
+    <section class="standard-bar" id="standard">
+      <article><span>01</span><div><strong>Authentique</strong><p>Marquages, couleurs et pièces contrôlés.</p></div></article>
+      <article><span>02</span><div><strong>Complète</strong><p>Conforme à la composition de la référence annoncée.</p></div></article>
+      <article><span>03</span><div><strong>Très bon état</strong><p>Sans fissure, casse ni usure importante visible.</p></div></article>
+      <article><span>04</span><div><strong>Prête à expédier</strong><p>Stock réel, vérifié et disponible immédiatement.</p></div></article>
     </section>
 
-    <section class="catalogue-section" id="catalogue">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Catalogue</p>
-          <h2>La collection actuelle</h2>
-        </div>
+    <section class="catalogue" id="catalogue">
+      <header class="section-header">
+        <div><p class="kicker">Catalogue actuel</p><h2>Figurines disponibles</h2></div>
         <p id="resultCount"></p>
+      </header>
+
+      <div class="tools">
+        <input id="searchInput" type="search" placeholder="Rechercher un personnage ou une référence">
+        <select id="themeFilter" aria-label="Univers">
+          <option value="all">Tous les univers</option>
+          <option value="Star Wars">Star Wars</option>
+          <option value="Ninjago">Ninjago</option>
+          <option value="City">City</option>
+        </select>
+        <select id="sortSelect" aria-label="Trier">
+          <option value="featured">Ordre de sélection</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="name">Nom A–Z</option>
+        </select>
       </div>
-
-      <div class="catalogue-tools">
-        <label class="search-box">
-          <span>Rechercher</span>
-          <input id="searchInput" type="search" placeholder="Nom, référence, univers…">
-        </label>
-
-        <label>
-          <span>Univers</span>
-          <select id="themeFilter">
-            <option value="all">Tous les univers</option>
-            <option value="Star Wars">Star Wars</option>
-            <option value="Ninjago">Ninjago</option>
-            <option value="City">City</option>
-          </select>
-        </label>
-
-        <label>
-          <span>État</span>
-          <select id="conditionFilter">
-            <option value="all">Tous les états</option>
-            <option value="complete">Complètes</option>
-            <option value="incomplete">Incomplètes</option>
-          </select>
-        </label>
-
-        <label>
-          <span>Trier par</span>
-          <select id="sortSelect">
-            <option value="featured">Sélection</option>
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
-            <option value="name">Nom</option>
-          </select>
-        </label>
-      </div>
-
       <div class="product-grid" id="productGrid"></div>
     </section>
 
-    <section class="collections" id="collections">
-      <div class="collection-card dark">
-        <p class="eyebrow">Collection</p>
-        <h3>Armée de droïdes</h3>
-        <p>Une sélection Star Wars pensée comme un ensemble cohérent.</p>
-        <a href="#catalogue">Voir les droïdes</a>
-      </div>
-      <div class="collection-card light">
-        <p class="eyebrow">Collection</p>
-        <h3>Les guerriers Ninjago</h3>
-        <p>Personnages, antagonistes et pièces rares classés par référence.</p>
-        <a href="#catalogue">Voir Ninjago</a>
+    <section class="editorial" id="guide">
+      <div class="editorial-title"><p class="kicker">Acheter d'occasion, simplement</p><h2>Un catalogue pensé pour éviter les doutes.</h2></div>
+      <div class="editorial-copy">
+        <p>Pas de photos ambiguës, de pièces approximatives ou de descriptions vagues. Chaque fiche indique la référence exacte, l'univers, la composition vérifiée et le stock disponible.</p>
+        <p>Le visuel représente la référence vendue. L'exemplaire expédié respecte notre standard très bon état et peut uniquement présenter de légères traces superficielles normales pour une figurine d'occasion.</p>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div>
-        <p class="eyebrow">Notre méthode</p>
-        <h2>Une fiche claire pour chaque figurine.</h2>
-      </div>
-      <div class="about-copy">
-        <p>
-          Chaque figurine est examinée, identifiée et décrite avant sa mise en ligne.
-          La référence, l’état, les accessoires et les éventuelles pièces manquantes sont affichés sans ambiguïté.
-        </p>
-        <p>
-          Les photographies correspondent toujours à l’exemplaire réellement vendu.
-        </p>
-      </div>
+    <section class="manifesto">
+      <p class="kicker">Le standard Atelier</p>
+      <h2>Pas “comme neuf”.<br>Pas “état correct”.<br><em>Très bon état, vérifié.</em></h2>
+      <p>Une promesse simple, appliquée à chaque figurine du catalogue.</p>
     </section>
   </main>
 
   <footer>
-    <div class="brand footer-brand">
-      <span class="brand-mark">AM</span>
-      <span>Atelier Minifig</span>
-    </div>
-    <p>Figurines de collection sélectionnées individuellement.</p>
-    <p>© 2026 Atelier Minifig</p>
+    <div><strong>ATELIER MINIFIG</strong><p>Figurines de collection contrôlées et classées par référence.</p></div>
+    <div><a href="#catalogue">Catalogue</a><a href="#standard">Notre standard</a><a href="#guide">Guide d'achat</a></div>
+    <div><p>Site indépendant, non affilié au groupe LEGO.</p><p>LEGO® est une marque du groupe LEGO.</p></div>
   </footer>
 
   <div class="drawer-overlay" id="drawerOverlay"></div>
   <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <h2>Votre panier</h2>
-      <button id="cartClose" aria-label="Fermer">×</button>
-    </div>
+    <div class="cart-header"><h2>Panier</h2><button id="cartClose" aria-label="Fermer">×</button></div>
     <div id="cartItems" class="cart-items"></div>
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total</span>
-        <strong id="cartTotal">0 €</strong>
-      </div>
-      <button class="button primary checkout-button">Passer au paiement</button>
-      <p class="cart-note">Prototype : paiement non connecté.</p>
-    </div>
+    <div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">0 €</strong></div><button class="button dark checkout-button">Continuer</button><p>Prototype : paiement non connecté.</p></div>
   </aside>
 
-  <dialog id="productDialog">
-    <button class="dialog-close" id="dialogClose" aria-label="Fermer">×</button>
-    <div id="dialogContent"></div>
-  </dialog>
-
+  <dialog id="productDialog"><button class="dialog-close" id="dialogClose" aria-label="Fermer">×</button><div id="dialogContent"></div></dialog>
   <script src="app.js"></script>
 </body>
 </html>
