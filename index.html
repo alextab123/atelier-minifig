@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Minifig — Figurines de collection</title>
+  <meta name="description" content="Figurines LEGO authentiques, identifiées et photographiées individuellement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">Livraison offerte dès 75 € · Figurines contrôlées individuellement</div>
+
+  <header class="site-header">
+    <a class="brand" href="#">
+      <span class="brand-mark">AM</span>
+      <span>Atelier Minifig</span>
+    </a>
+    <nav class="desktop-nav">
+      <a href="#catalogue">Catalogue</a>
+      <a href="#collections">Collections</a>
+      <a href="#about">Notre sélection</a>
+    </nav>
+    <button class="cart-button" id="cartOpen" aria-label="Ouvrir le panier">
+      Panier <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Figurines de collection</p>
+        <h1>Chaque figurine mérite sa place.</h1>
+        <p class="hero-text">
+          Des figurines authentiques, identifiées par référence et présentées individuellement.
+          Une sélection pensée pour les collectionneurs comme pour les cadeaux.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#catalogue">Explorer le catalogue</a>
+          <a class="button secondary" href="#about">Découvrir notre méthode</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="display-card card-large">
+          <img src="assets/njo060.svg" alt="Pythor P. Chumsworth">
+          <div class="display-meta">
+            <span>Ninjago</span>
+            <strong>Pythor · njo060</strong>
+          </div>
+        </div>
+        <div class="display-card card-small">
+          <img src="assets/sw0359.svg" alt="Commando Droid">
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><strong>Authenticité vérifiée</strong><span>Pièces et marquages contrôlés</span></div>
+      <div><strong>État transparent</strong><span>Chaque défaut est indiqué</span></div>
+      <div><strong>Stock réel</strong><span>Un exemplaire = une disponibilité</span></div>
+    </section>
+
+    <section class="catalogue-section" id="catalogue">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Catalogue</p>
+          <h2>La collection actuelle</h2>
+        </div>
+        <p id="resultCount"></p>
+      </div>
+
+      <div class="catalogue-tools">
+        <label class="search-box">
+          <span>Rechercher</span>
+          <input id="searchInput" type="search" placeholder="Nom, référence, univers…">
+        </label>
+
+        <label>
+          <span>Univers</span>
+          <select id="themeFilter">
+            <option value="all">Tous les univers</option>
+            <option value="Star Wars">Star Wars</option>
+            <option value="Ninjago">Ninjago</option>
+            <option value="City">City</option>
+          </select>
+        </label>
+
+        <label>
+          <span>État</span>
+          <select id="conditionFilter">
+            <option value="all">Tous les états</option>
+            <option value="complete">Complètes</option>
+            <option value="incomplete">Incomplètes</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Trier par</span>
+          <select id="sortSelect">
+            <option value="featured">Sélection</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name">Nom</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section class="collections" id="collections">
+      <div class="collection-card dark">
+        <p class="eyebrow">Collection</p>
+        <h3>Armée de droïdes</h3>
+        <p>Une sélection Star Wars pensée comme un ensemble cohérent.</p>
+        <a href="#catalogue">Voir les droïdes</a>
+      </div>
+      <div class="collection-card light">
+        <p class="eyebrow">Collection</p>
+        <h3>Les guerriers Ninjago</h3>
+        <p>Personnages, antagonistes et pièces rares classés par référence.</p>
+        <a href="#catalogue">Voir Ninjago</a>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div>
+        <p class="eyebrow">Notre méthode</p>
+        <h2>Une fiche claire pour chaque figurine.</h2>
+      </div>
+      <div class="about-copy">
+        <p>
+          Chaque figurine est examinée, identifiée et décrite avant sa mise en ligne.
+          La référence, l’état, les accessoires et les éventuelles pièces manquantes sont affichés sans ambiguïté.
+        </p>
+        <p>
+          Les photographies correspondent toujours à l’exemplaire réellement vendu.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="brand footer-brand">
+      <span class="brand-mark">AM</span>
+      <span>Atelier Minifig</span>
+    </div>
+    <p>Figurines de collection sélectionnées individuellement.</p>
+    <p>© 2026 Atelier Minifig</p>
+  </footer>
+
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Votre panier</h2>
+      <button id="cartClose" aria-label="Fermer">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">0 €</strong>
+      </div>
+      <button class="button primary checkout-button">Passer au paiement</button>
+      <p class="cart-note">Prototype : paiement non connecté.</p>
+    </div>
+  </aside>
+
+  <dialog id="productDialog">
+    <button class="dialog-close" id="dialogClose" aria-label="Fermer">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
